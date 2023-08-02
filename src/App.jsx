@@ -1,10 +1,11 @@
 import './App.css'
+import Game from './components/Game'
 
 function App() {
 
   return (
     <>
-      hello world
+      <Game />
     </>
         
   )
