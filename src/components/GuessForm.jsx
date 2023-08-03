@@ -1,14 +1,6 @@
 import { useState } from "react";
 
-const GuessForm = () => {
-  const [guessedLetter, setGuessedLetter] = useState("");
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-    alert(guessedLetter);
-
-  };
+const GuessForm = ({ guessedLetter, setGuessedLetter, submitHandler }) => {
 
   return (
     <>
@@ -22,8 +14,10 @@ const GuessForm = () => {
           pattern="[A-Za-z]{1}"
           maxLength={1}
           size={2}
+          title="Input must be a letter"
+          required
         />
-        
+
         <button>Guess!</button>
       </form>
     </>

@@ -13,7 +13,6 @@ function App() {
         <Route path="/" element={<Game />} />
         <Route path="/instructions" element={<Instructions />} />
       </Routes>
-      <NavBar />
     </>
         
   )

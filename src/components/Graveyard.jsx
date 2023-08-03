@@ -1,4 +1,4 @@
 const Graveyard = () => {
-  return <h3>Graveyard</h3>;
+  return <h3>Guessed Letters</h3>;
 };
 export default Graveyard;
