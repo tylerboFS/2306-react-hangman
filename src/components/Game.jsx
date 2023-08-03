@@ -18,6 +18,27 @@ const Game = () => {
     const isCorrect = currentWord.includes(guessedLetter);
 
     alert(isCorrect ? "Correct!" : "Wrong!");
+
+    if(isCorrect){
+      // have letter show up on the display
+      // where in currentWord is the guessedLetter????
+      const copyOfDisplayArray = [...displayArray];
+
+      for(let i=0; i<currentWord.length; i++){
+
+        if(currentWord[i] === guessedLetter){
+          copyOfDisplayArray[i] = guessedLetter;
+        }
+
+      }
+
+      setDisplayArray(copyOfDisplayArray);
+    }
+    else{
+      // have letter show up in the graveyard
+    }
+
+
   };
 
   /*
