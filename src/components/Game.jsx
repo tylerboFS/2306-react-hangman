@@ -6,6 +6,7 @@ import WordDisplay from "./WordDisplay";
 const Game = () => {
   const [currentWord, setCurrentWord] = useState(null);
   const [guessedLetter, setGuessedLetter] = useState("");
+  const [displayArray, setDisplayArray] = useState(null);
 
   //Write a function formSubmitHandler
   //Pass this function to guess form
@@ -31,9 +32,17 @@ const Game = () => {
           "https://random-word-api.vercel.app/api?words=1"
         );
         const body = await response.json();
-        //console.log(body[0]);
-        const theWord = body[0];
-        setCurrentWord(theWord.toUpperCase());
+        const theWord = body[0].toUpperCase();
+        console.log(theWord);
+
+        setCurrentWord(theWord);
+
+        //convert theWord to an array
+        const wordArray = [...theWord];
+        //map the array with underscores
+        // ["C", "A", "T"] => ["_", "_", "_"]
+        setDisplayArray(wordArray.map((char) => "_"));
+        //console.log(displayArray);
       } catch (error) {
         console.log(error);
       }
@@ -49,7 +58,7 @@ const Game = () => {
         setGuessedLetter={setGuessedLetter}
         submitHandler={formSubmitHandler}
       />
-      <WordDisplay currentWord={currentWord} />
+      <WordDisplay displayArray={displayArray} />
       <Graveyard />
     </>
   );

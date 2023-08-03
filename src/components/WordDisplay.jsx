@@ -1,9 +1,10 @@
-const WordDisplay = (props) => {
-
+const WordDisplay = ({ displayArray }) => {
   // console.log("Current Word:", props.currentWord);
   return (
     <>
-      <p>{props.currentWord ? props.currentWord : "Loading..."}</p>
+      <p id="displayWord">
+        {!displayArray ? "Loading..." : displayArray.map((char) => char + " ")}
+      </p>
     </>
   );
 };
