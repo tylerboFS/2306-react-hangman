@@ -8,6 +8,31 @@ const Game = () => {
   const [guessedLetter, setGuessedLetter] = useState("");
   const [displayArray, setDisplayArray] = useState(null);
 
+  useEffect(() => {
+    // fetch a random word
+    const fetchWord = async () => {
+      try {
+        const response = await fetch(
+          "https://random-word-api.vercel.app/api?words=1"
+        );
+        const body = await response.json();
+        const theWord = body[0].toUpperCase();
+        console.log(theWord);
+
+        setCurrentWord(theWord);
+
+        //convert theWord to an array
+        const wordArray = [...theWord];
+
+        //map the array with underscores
+        setDisplayArray(wordArray.map((char) => "_"));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchWord();
+  }, []);
+
   //Write a function formSubmitHandler
   //Pass this function to guess form
   //function should alert true if guess is in word
@@ -40,36 +65,6 @@ const Game = () => {
 
 
   };
-
-  /*
-   * Display the "word" as underscores
-   */
-
-  useEffect(() => {
-    // fetch a random word
-    const fetchWord = async () => {
-      try {
-        const response = await fetch(
-          "https://random-word-api.vercel.app/api?words=1"
-        );
-        const body = await response.json();
-        const theWord = body[0].toUpperCase();
-        console.log(theWord);
-
-        setCurrentWord(theWord);
-
-        //convert theWord to an array
-        const wordArray = [...theWord];
-        //map the array with underscores
-        // ["C", "A", "T"] => ["_", "_", "_"]
-        setDisplayArray(wordArray.map((char) => "_"));
-        //console.log(displayArray);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchWord();
-  }, []);
 
   return (
     <>
